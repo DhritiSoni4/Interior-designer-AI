@@ -1,41 +1,58 @@
 # Interior Designer AI 🏡
 
-A Flask-based backend that generates intelligent interior design recommendations based on user inputs.
+An intelligent backend system that generates interior design recommendations using both user input and image analysis.
 
 ---
 
 ## 🚀 Features
 
-- ✅ Rule-based recommendation engine  
-- ✅ Style-based design suggestions (minimal, modern, boho)  
-- ✅ Room-specific customization (bedroom, living room)  
-- ✅ Budget-aware recommendations  
-- ✅ Clean JSON API output  
+- ✅ Style-based recommendations (minimal, modern, boho)
+- ✅ Room-specific suggestions (bedroom, living room)
+- ✅ Budget-aware furniture planning
+- ✅ Image upload support
+- ✅ Dominant color extraction from room images
+- ✅ Human-friendly color interpretation
 
 ---
 
 ## 🧠 How It Works
 
-The system uses a structured knowledge base to generate:
-- 🎨 Color palettes  
-- 🪑 Furniture suggestions  
-- 💡 Design explanations  
+1. User provides:
+   - Room type
+   - Budget
+   - Style
+   - Optional image
 
-Inputs:
-- Room type  
-- Budget  
-- Style  
+2. System:
+   - Uses rule-based knowledge engine
+   - Extracts dominant colors from uploaded image
+   - Converts raw RGB → meaningful color names
+
+3. Outputs:
+   - 🎨 Color palette
+   - 🪑 Furniture suggestions
+   - 💡 Explanation
 
 ---
 
 ## 🛠 Tech Stack
 
-- Python  
-- Flask  
-- REST API  
+- Python
+- Flask
+- NumPy
+- Pillow (Image Processing)
 
 ---
 
 ## 📡 API Usage
 
 ### Endpoint:
+POST /design
+
+### Example Request:
+```bash
+curl -X POST http://127.0.0.1:5000/design \
+-F "room_type=bedroom" \
+-F "budget=20000" \
+-F "style=minimal" \
+-F "image=@room.jpg"
