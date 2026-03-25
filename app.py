@@ -23,7 +23,7 @@ def design():
     room_type = data["room_type"]
     budget = int(data["budget"])
     style = data["style"].lower()
-
+    description = data.get("description", "")
     # 👉 Knowledge base (data-driven system)
     design_knowledge = {
     "minimal": {
@@ -78,12 +78,13 @@ def design():
         furniture.append("premium decor pieces")
 
     output = {
-        "style": style,
-        "room_type": room_type,
-        "colors": colors,
-        "furniture": furniture,
-        "explanation": f"A {style} {room_type} optimized for a budget of ₹{budget}"
-    }
+    "style": style,
+    "room_type": room_type,
+    "colors": colors,
+    "furniture": furniture,
+    "description": description,
+    "explanation": f"A {style} {room_type} optimized for a budget of ₹{budget}"
+}
 
     return jsonify({
         "success": True,
